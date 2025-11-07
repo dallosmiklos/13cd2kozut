@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mysql = require("mysql");
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
+const bodyParser = require('body-parser'); //  AZ első től ötödik sorig a szükséges funkciókat
+app.use(bodyParser.json());//Nem értem     
 
 
 
-app.use(cors());                    
+app.use(cors()); //Nem értem                  
 
 const db = mysql.createConnection({
     user: "root",
@@ -15,11 +15,11 @@ const db = mysql.createConnection({
     port: 3307,
     password: "",
     database: "kozutak",
-}); 
+}); //A tizenkettőtöl tizenhatodik sorig a program létrehozza a kapcsolatot az adatbázissal
 
 app.get("/", (req, res) => {
     res.send("Fut a backend!");
-})
+}) //Ha a backen szerver fut akkor kiirja a trminálba hogy Fut a backend!
 
 
 // regiok lista
@@ -29,7 +29,7 @@ app.get("/regiok", (req, res) => {
         if (err) return res.json(err);
         return res.json(result)
     })
-})  
+}) //A huszonhattól a harmincadik sorig a program lekéri az összes adatot a regiok nevű adatbázisból 
 
 app.get("/regiok_8", (req, res) => {
     const sql = "SELECT * FROM `regiok` WHERE Rid = 8";
